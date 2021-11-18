@@ -52,6 +52,11 @@ public enum Native {
     }
 
     public static synchronized void load() {
+        final String tempFolderPath = System.getenv("ZSTD_JNI_TEMP_FOLDER_PATH");
+        if (tempFolderPath != null) {
+                load(tempFolderPath);
+                return;
+        }
         load(null);
     }
 
